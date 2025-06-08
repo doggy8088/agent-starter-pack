@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'Agent Starter Pack',
-  description: 'Build Production AI Agents faster using Agent Starter Pack',
+  description: '使用 Agent Starter Pack 更快打造生產級 AI 代理人',
   base: '/agent-starter-pack/',
   head: [
     ['meta', {property: 'og:image', content: '/images/agent_starter_pack_screenshot.png'}],
@@ -22,35 +22,35 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'Agents', link: '/agents/overview' },
+      { text: '首頁', link: '/' },
+      { text: '指南', link: '/guide/getting-started' },
+      { text: '代理', link: '/agents/overview' },
       { text: 'CLI', link: '/cli/index.md' }
     ],
     sidebar: [
       {
-        text: 'Guide',
+        text: '指南',
         items: [
-          { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Development Guide', link: '/guide/development-guide' },
-          { text: 'Why Starter Pack?', link: '/guide/why_starter_pack' },
-          { text: 'Video Tutorials', link: '/guide/video-tutorials' },
-          { text: 'Installation', link: '/guide/installation' },
-          { text: 'Deployment', link: '/guide/deployment' },
-          { text: 'Data Ingestion', link: '/guide/data-ingestion' },
-          { text: 'Observability', link: '/guide/observability' },
-          { text: 'Troubleshooting', link: '/guide/troubleshooting' }
+          { text: '快速開始', link: '/guide/getting-started' },
+          { text: '開發指南', link: '/guide/development-guide' },
+          { text: '為什麼選擇 Starter Pack？', link: '/guide/why_starter_pack' },
+          { text: '影片教學', link: '/guide/video-tutorials' },
+          { text: '安裝', link: '/guide/installation' },
+          { text: '部署', link: '/guide/deployment' },
+          { text: '資料導入', link: '/guide/data-ingestion' },
+          { text: '可觀察性', link: '/guide/observability' },
+          { text: '疑難排解', link: '/guide/troubleshooting' }
         ]
       },
       {
-        text: 'Agents',
+        text: '代理',
         items: [
-          { text: 'Overview', link: '/agents/overview' },
+          { text: '總覽', link: '/agents/overview' },
 
         ]
       },
       {
-        text: 'CLI Reference',
+        text: 'CLI 參考',
         items: [
           { text: 'create', link: '/cli/create' },
           { text: 'setup-cicd', link: '/cli/setup_cicd' }
@@ -68,7 +68,7 @@ export default defineConfig({
     },
 
     footer: {
-      message: 'Released under the Apache 2.0 License.'
+      message: '以 Apache 2.0 授權條款釋出。'
     }
   }
 })
