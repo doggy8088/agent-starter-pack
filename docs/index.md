@@ -1,42 +1,42 @@
 ---
 layout: home
-title: Home
+title: 首頁
 
 hero:
   name: Agent Starter Pack
-  text: Production-Ready  Agents on Google Cloud, faster
-  tagline: Go from idea to deployment faster with pre-built templates & tools.
+  text: 在 Google Cloud 上更快地建立生產級代理程式
+  tagline: 透過預建模板和工具，從構想更快地達到部署。
   image:
     src: https://github.com/GoogleCloudPlatform/agent-starter-pack/blob/main/docs/images/logo.png?raw=true
-    alt: Agent Starter Pack Logo
+    alt: Agent Starter Pack 標誌
   actions:
     - theme: brand
-      text: Get Started Guide
+      text: 開始使用指南
       link: /guide/getting-started
     - theme: alt
-      text: Development Guide
+      text: 開發指南
       link: /guide/development-guide
     - theme: alt
-      text: Watch Demo Video
+      text: 觀看展示影片
       link: https://www.youtube.com/watch?v=9zqwym-N3lg
 
 features:
   - icon: ⚡️
-    title: Launch Quickly
-    details: Start fast with pre-built agent templates (ReAct, RAG, multi-agent, Live Multimodal API) implementing common patterns.
+    title: 快速啟動
+    details: 透過實作常見模式的預建代理程式模板 (ReAct、RAG、多代理、Live Multimodal API) 快速入門。
   - icon: 🧪
-    title: Experiment & Evaluate
-    details: Iterate using integrated Vertex AI evaluation and an interactive testing playground.
+    title: 實驗與評估
+    details: 使用整合的 Vertex AI 評估和互動式測試環境進行迭代。
   - icon: ☁️
-    title: Deploy Confidently
-    details: Ship reliable agents with production-ready infra (Cloud Run / Agent Engine) featuring monitoring, observability, and CI/CD.
+    title: 自信部署
+    details: 透過具備監控、可觀察性及 CI/CD 功能的生產級基礎設施 (Cloud Run / Agent Engine) 交付可靠的代理程式。
   - icon: 🛠️
-    title: Customize & Extend
-    details: Adapt and enhance templates and infrastructure for your specific use case.
+    title: 客製化與擴展
+    details: 為您的特定使用案例調整和強化模板和基礎設施。
 ---
 
-::: tip ⭐ Like Agent Starter Pack?
-Help us spread the word by giving us a star on GitHub!
+::: tip ⭐ 喜歡 Agent Starter Pack 嗎？
+透過在 GitHub 上給予我們一個星星，幫助我們推廣！
 
 <a href="https://github.com/GoogleCloudPlatform/agent-starter-pack/stargazers" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 8px;"> <!-- Link the badge too! -->
   ![GitHub Stars](https://img.shields.io/github/stars/GoogleCloudPlatform/agent-starter-pack?style=social&color=yellow) <!-- Added style=social for better look -->
@@ -44,10 +44,10 @@ Help us spread the word by giving us a star on GitHub!
 
 :::
 
-## Quick Links
+## 快速連結
 
-- **New Users:** [Getting Started Guide](/guide/getting-started)
-- **Setup:** [Installation Guide](/guide/installation)
-- **Going Live:** [Deployment Guide](/guide/deployment)
-- **Explore Templates:** [Agent Templates Overview](/agents/overview)
-- **Command Line:** [CLI Reference](/cli/)
+- **新使用者：** [開始使用指南](/guide/getting-started)
+- **設定：** [安裝指南](/guide/installation)
+- **上線：** [部署指南](/guide/deployment)
+- **探索模板：** [代理程式模板概觀](/agents/overview)
+- **命令列：** [CLI 參考](/cli/)

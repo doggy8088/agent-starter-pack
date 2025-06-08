@@ -1,71 +1,70 @@
-# Data Ingestion Pipeline for RAG
+# RAG 的資料引入管線
 
-The Agent Starter Pack simplifies incorporating data ingestion into your agent projects. This is especially useful for agents requiring document processing and retrieval, such as Retrieval Augmented Generation (RAG) applications.
+Agent Starter Pack 簡化了將資料引入整合到您的代理程式專案中。這對於需要文件處理和檢索的代理程式特別有用，例如檢索增強生成 (RAG) 應用程式。
 
-## Overview
+## 概述
 
-Data ingestion automates:
+資料引入自動化了：
 
--   Loading data from various sources.
--   Processing and chunking documents.
--   Generating embeddings with Vertex AI.
--   Storing processed data and embeddings in **Vertex AI Search** or **Vertex AI Vector Search**.
--   Scheduling periodic data updates.
+-   從多種資料來源載入資料。
+-   處理和分塊文件。
+-   使用 Vertex AI 生成嵌入向量。
+-   將處理過的資料和嵌入向量儲存到 **Vertex AI Search** 或 **Vertex AI Vector Search** 中。
+-   排程定期資料更新。
 
-## When to Include Data Ingestion
+## 何時納入資料引入
 
-Consider data ingestion if:
+在下列情況下考慮資料引入：
 
--   Your agent needs to search or reference extensive documentation.
--   You're developing a RAG-based application.
--   Your agent's knowledge base requires periodic updates.
--   You want to keep your agent's content fresh and searchable.
+-   您的代理程式需要搜尋或參考大量文件。
+-   您正在開發基於 RAG 的應用程式。
+-   您的代理程式知識庫需要定期更新。
+-   您希望保持代理程式內容的時效性和可搜尋性。
 
-## Usage
+## 使用方式
 
-### Project Creation
+### 專案建立
 
-Include data ingestion during project creation in two ways:
+在專案建立期間，可以透過兩種方式納入資料引入功能：
 
-1.  **Automatic Inclusion**: Some agents (e.g., those designed for RAG like `agentic_rag`) automatically include it due to their nature. You will be prompted to select a datastore (`vertex_ai_search` or `vertex_ai_vector_search`) if not specified.
+1.  **自動納入**：某些代理程式（例如：為 RAG 設計的 `agentic_rag`）因其性質會自動納入此功能。如果未指定，系統會提示您選擇一個資料儲存區 (`vertex_ai_search` 或 `vertex_ai_vector_search`)。
 
-2.  **Optional Inclusion**: For other agents, add it using the `--include-data-ingestion` flag and specify the desired datastore with `--datastore` (or `-ds`):
+2.  **選擇性納入**：對於其他代理程式，請使用 `--include-data-ingestion` 旗標並透過 `--datastore`（或 `-ds`）指定所需的資料儲存區來新增它：
 
     ```bash
-    # Using Vertex AI Search
+    # 使用 Vertex AI Search
     agent-starter-pack create my-agent-project --include-data-ingestion -ds vertex_ai_search
 
-    # Using Vertex AI Vector Search
+    # 使用 Vertex AI Vector Search
     agent-starter-pack create my-agent-project --include-data-ingestion -ds vertex_ai_vector_search
     ```
-    If `--datastore` is omitted when `--include-data-ingestion` is used, you will be prompted to choose one.
+    如果在啟用 `--include-data-ingestion` 時省略 `--datastore`，系統會提示您選擇一個。
 
-### Infrastructure Setup
+### 基礎設施設定
+Terraform IaC 會根據您選擇的資料儲存區來配置所需的基礎設施：
 
-The Terraform IaC configures the necessary infrastructure based on your chosen datastore:
+-   **Vertex AI Search**：資料儲存區。
+-   **Vertex AI Vector Search**：索引、索引端點，以及用於暫存資料的儲存空間 (Bucket)。
+-   必要的服務帳戶和權限。
+-   用於管線成品 (artifact) 的儲存空間 (Bucket)。
+-   BigQuery 資料集 (如果適用)。
 
--   **Vertex AI Search**: Datastores.
--   **Vertex AI Vector Search**: Indexes, Index Endpoints, and Buckets for staging data.
--   Necessary service accounts and permissions.
--   Storage buckets for pipeline artifacts.
--   BigQuery datasets (if applicable).
+## 開始使用
 
-## Getting Started
-
-1.  Create your project with data ingestion, specifying your datastore:
+1.  建立您的專案並納入資料引入功能，同時指定您的資料儲存區：
 
     ```bash
-    # Example with Vertex AI Search
+    # 使用 Vertex AI Search 的範例
     agent-starter-pack create my-project -ds vertex_ai_search
 
-    # Example with Vertex AI Vector Search
+    # 使用 Vertex AI Vector Search 的範例
     agent-starter-pack create my-project -ds vertex_ai_vector_search
     ```
 
-2.  Follow the setup instructions in the generated `data_ingestion/README.md`. Deploy the Terraform infrastructure (at least in your development project) before running the data pipeline.
+2.  遵循所產生 `data_ingestion/README.md` 中的設定指示。在執行資料管線之前，部署 Terraform 基礎設施（至少在您的開發專案中）。
 
-## Learn More
+## 了解更多
 
--   [Vertex AI Pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction) for pipeline management.
--   [Vertex AI Search documentation](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) for search capabilities.
--   [Vertex AI Vector Search documentation](https://cloud.google.com/vertex-ai/docs/vector-search/overview) for vector database capabilities.
+-   [Vertex AI Pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction) 用於管線管理。
+-   [Vertex AI Search 文件](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) 用於搜尋功能。
+-   [Vertex AI Vector Search 文件](https://cloud.google.com/vertex-ai/docs/vector-search/overview) 用於向量資料庫功能。

@@ -1,10 +1,10 @@
-# CLI Reference
+# CLI 參考
 
-The Agent Starter Pack provides a command-line interface (CLI) to create and setup Generative AI Agent templates in Google Cloud. 
+Agent Starter Pack 提供命令列介面 (CLI)，用於在 Google Cloud 中建立及設定 Generative AI Agent templates。
 
-## Available Commands
+## 可用指令
 
-- [`create`](create.md) - Create a new generative AI application project
-- [`setup-cicd`](setup_cicd.md) - Set up CI/CD pipeline for your project
+- [`create`](create.md) - 建立新的生成式 AI 應用專案
+- [`setup-cicd`](setup_cicd.md) - 為您的專案設定 CI/CD pipeline
 
-For detailed usage instructions, click on the command links above.
+如需詳細使用說明，請點擊上方指令連結。

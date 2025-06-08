@@ -1,70 +1,68 @@
+# 🚀 快速入門
 
-# 🚀 Getting Started
+這份指南將引導您快速設定您的首個代理程式專案。
 
-This guide quickly walks you through setting up your first agent project.
+**想零設定？** 👉 [在 Firebase Studio 試用](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) 或在 [Cloud Shell 試用](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs)
 
-**Want zero setup?** 👉 [Try in Firebase Studio](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) or in [Cloud Shell](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs)
+### 前置條件
 
-### Prerequisites
+**Python 3.10+** | **Google Cloud SDK** [安裝指南](https://cloud.google.com/sdk/docs/install) | **Terraform** [安裝指南](https://developer.hashicorp.com/terraform/downloads) | **`uv` (自動安裝)** [手動安裝指南](https://docs.astral.sh/uv/getting-started/installation/)
 
-**Python 3.10+** | **Google Cloud SDK** [Install Guide](https://cloud.google.com/sdk/docs/install) | **Terraform** [Install Guide](https://developer.hashicorp.com/terraform/downloads) | **`uv` (automatically installed)** [Manual Install Guide](https://docs.astral.sh/uv/getting-started/installation/)
-
-### 1. Install the Starter Pack
+### 1. 安裝入門套件
 
 ```bash
-# Create and activate a Python virtual environment (Recommended)
+# 建立並啟用 Python 虛擬環境 (建議)
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate  # 在 Windows 上: .venv\Scripts\activate
 
-# Install the package
+# 安裝套件
 pip install agent-starter-pack
 ```
-Check the [Installation Guide](/guide/installation) for alternative installation methods.
+請參閱 [安裝指南](/guide/installation) 以了解其他安裝方法。
 
-### 2. Create Your Agent Project
+### 2. 建立您的代理程式專案
 
-Run the `create` command and follow the prompts:
+執行 `create` 命令並依照提示操作：
 
 ```bash
 agent-starter-pack create my-awesome-agent
 ```
 
-This command:
-*   Lets you choose an agent template (e.g., `adk_base`, `agentic_rag`).
-*   Lets you select a deployment target (e.g., `cloud_run`, `agent_engine`).
-*   Generates a complete project structure (backend, optional frontend, deployment infra).
+此命令會：
+*   讓您選擇代理程式範本 (例如：`adk_base`、`agentic_rag`)。
+*   讓您選擇部署目標 (例如：`cloud_run`、`agent_engine`)。
+*   產生完整的專案結構 (後端、選用前端、部署基礎設施)。
 
-**Examples:**
+**範例：**
 
 ```bash
-# Create a RAG agent for Cloud Run (select options when prompted)
+# 建立用於 Cloud Run 的 RAG 代理程式 (依照提示選擇選項)
 agent-starter-pack create my-rag-agent
 
-# Create a base ADK agent for Agent Engine directly
+# 直接建立用於 Agent Engine 的基礎 ADK 代理程式
 agent-starter-pack create my-adk-agent -a adk_base -d agent_engine
 ```
 
-### 3. Explore and Run Locally
+### 3. 探索並在本地執行
 
 ```bash
 cd my-awesome-agent && make install && make playground
 ```
 
-Inside your new project directory (`my-awesome-agent`), you'll find:
+在您的新專案目錄 (`my-awesome-agent`) 中，您會找到：
 
-*   `app/`: Backend agent code.
-*   `deployment/`: Terraform infrastructure code.
-*   `tests/`: Unit and integration tests for your agent.
-*   `notebooks/`: Jupyter notebooks for getting started with evaluation.
-*   `frontend/`: (If applicable) Web UI for interacting with your agent.
-*   `README.md`: **Project-specific instructions for running locally and deploying.**
+*   `app/`: 後端代理程式程式碼。
+*   `deployment/`: Terraform 基礎設施程式碼。
+*   `tests/`: 代理程式的單元和整合測試。
+*   `notebooks/`: 用於開始評估的 Jupyter notebooks。
+*   `frontend/`: (如適用) 用於與代理程式互動的網頁使用者介面。
+*   `README.md`：**專案專屬的本地執行和部署說明。**
+➡️ **依照您新專案的 `README.md` 中的說明，在本地執行。**
 
-➡️ **Follow the instructions in *your new project's* `README.md` to run it locally.**
+### 後續步驟
 
-### Next Steps
+您已準備就緒！請參閱 [開發指南](/guide/development-guide) 以了解擴充、自訂及部署代理程式的詳細說明。
 
-You're ready to go! See the [Development Guide](/guide/development-guide) for detailed instructions on extending, customizing and deploying your agent.
-
-- **Add Data (RAG):** Configure [Data Ingestion](/guide/data-ingestion) for knowledge-based agents.
-- **Monitor Performance:** Explore [Observability](/guide/observability) features for production monitoring.
-- **Deploy to Production:** Follow the [Deployment Guide](/guide/deployment) to deploy your agent to Google Cloud.
+- **新增資料 (RAG)：** 為知識型代理程式設定 [資料擷取](/guide/data-ingestion)。
+- **監控效能：** 探索用於生產監控的 [可觀測性](/guide/observability) 功能。
+- **部署至正式環境：** 依照 [部署指南](/guide/deployment) 將代理程式部署至 Google Cloud。

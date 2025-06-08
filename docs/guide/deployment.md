@@ -1,112 +1,110 @@
-# Deployment
+# 部署
 
-::: tip ⭐ Streamlined Deployment
-For a streamlined one-command deployment of the entire CI/CD pipeline and infrastructure using Terraform, you can use the [`uvx agent-starter-pack setup-cicd` CLI command](../cli/setup_cicd). Currently only supporting Github.
+::: tip ⭐ 精簡部署
+若要使用 Terraform 精簡地以一個指令部署整個 CI/CD 管線與基礎設施，您可以使用 [`uvx agent-starter-pack setup-cicd` CLI 指令](../cli/setup_cicd)。目前僅支援 Github。
 :::
+此範本代理程式利用 [**Terraform**](http://terraform.io) 定義並佈建底層基礎設施，同時由 [**Cloud Build**](https://cloud.google.com/build/) 協調持續整合與持續部署 (CI/CD) 管線。
 
-The templated agent leverages [**Terraform**](http://terraform.io) to define and provision the underlying infrastructure, while [**Cloud Build**](https://cloud.google.com/build/) orchestrates the continuous integration and continuous deployment (CI/CD) pipeline.
+## 部署工作流程
 
-## Deployment Workflow
+![部署工作流程](https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/deployment_workflow.png)
 
-![Deployment Workflow](https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/deployment_workflow.png)
+**說明：**
 
-**Description:**
+1. CI 管線 (`deployment/ci/pr_checks.yaml`):
+   - 於 pull request 建立/更新時觸發
+   - 執行單元與整合測試
 
-1. CI Pipeline (`deployment/ci/pr_checks.yaml`):
+2. CD 管線 (`deployment/cd/staging.yaml`):
 
-   - Triggered on pull request creation/update
-   - Runs unit and integration tests
+   - 於合併至 `main` 分支時觸發
+   - 建構並將應用程式推送至 Artifact Registry
+   - 部署至預備環境
+   - 執行負載測試
 
-2. CD Pipeline (`deployment/cd/staging.yaml`):
+3. 生產環境部署 (`deployment/cd/deploy-to-prod.yaml`):
+   - 於預備環境部署成功後觸發
+   - 需要手動批准
+   - 部署至生產環境
 
-   - Triggered on merge to `main` branch
-   - Builds and pushes application to Artifact Registry
-   - Deploys to staging environment
-   - Performs load testing
+## 設定
 
-3. Production Deployment (`deployment/cd/deploy-to-prod.yaml`):
-   - Triggered after successful staging deployment
-   - Requires manual approval
-   - Deploys to production environment
+**先決條件：**
 
-## Setup
-
-**Prerequisites:**
-
-1. A set of Google Cloud projects:
-   - Staging project
-   - Production project
-   - CI/CD project (can be the same as staging or production)
-2. Terraform installed on your local machine
-3. Enable required APIs in the CI/CD project. This will be required for the Terraform deployment:
+1. 一組 Google Cloud 專案：
+   - 預備專案
+   - 生產專案
+   - CI/CD 專案 (可與預備或生產專案相同)
+2. 在本機安裝 Terraform
+3. 在 CI/CD 專案中啟用所需 API。這將是 Terraform 部署的必要條件：
 
    ```bash
    gcloud config set project $YOUR_CI_CD_PROJECT_ID
    gcloud services enable serviceusage.googleapis.com cloudresourcemanager.googleapis.com cloudbuild.googleapis.com secretmanager.googleapis.com
    ```
 
-## Step-by-Step Guide
+## 逐步指南
 
-1. **Create a Git Repository using your favorite Git provider (GitHub, GitLab, Bitbucket, etc.)**
+1. **使用您偏好的 Git 提供者（GitHub、GitLab、Bitbucket 等）建立 Git 儲存庫**
 
-2. **Connect Your Repository to Cloud Build**
-   For detailed instructions, visit: [Cloud Build Repository Setup](https://cloud.google.com/build/docs/repositories#whats_next).<br>
+2. **將您的儲存庫連接至 Cloud Build**
+   如需詳細說明，請造訪：[Cloud Build 儲存庫設定](https://cloud.google.com/build/docs/repositories#whats_next)。<br>
 
-   ![Alt text](https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/connection_cb.gif)
+   ![替代文字](https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/connection_cb.gif)
 
-3. **Configure Terraform Variables**
+3. **設定 Terraform 變數**
 
-   - Edit `deployment/terraform/vars/env.tfvars` with your Google Cloud settings.
+   - 使用您的 Google Cloud 設定編輯 `deployment/terraform/vars/env.tfvars`。
 
-   | Variable               | Description                                                     | Required |
+   | 變數               | 說明                                                     | 必要 |
    | ---------------------- | --------------------------------------------------------------- | :------: |
-   | project_name           | Project name used as a base for resource naming                 |   Yes    |
-   | prod_project_id        | **Production** Google Cloud Project ID for resource deployment. |   Yes    |
-   | staging_project_id     | **Staging** Google Cloud Project ID for resource deployment.    |   Yes    |
-   | cicd_runner_project_id | Google Cloud Project ID where CI/CD pipelines will execute.     |   Yes    |
-   | region                 | Google Cloud region for resource deployment.                    |   Yes    |
-   | host_connection_name   | Name of the host connection you created in Cloud Build          |   Yes    |
-   | repository_name        | Name of the repository you added to Cloud Build                 |   Yes    |
+   | project_name           | 用作資源命名基礎的專案名稱                 |   是    |
+   | prod_project_id        | 用於資源部署的 **生產** Google Cloud 專案 ID。 |   是    |
+   | staging_project_id     | 用於資源部署的 **預備** Google Cloud 專案 ID。    |   是    |
+   | cicd_runner_project_id | CI/CD 管線將執行所在的 Google Cloud 專案 ID。     |   是    |
+   | region                 | 用於資源部署的 Google Cloud 區域。                    |   是    |
+   | host_connection_name   | 您在 Cloud Build 中建立的主機連接名稱          |   是    |
+   | repository_name        | 您新增至 Cloud Build 的儲存庫名稱                 |   是    |
 
-   Other optional variables may include: telemetry and feedback log filters, service account roles, and for projects requiring data ingestion: pipeline cron schedule, pipeline roles, and datastore-specific configurations.
+   其他選用變數可能包括：遙測與意見回饋日誌篩選器、服務帳戶角色，以及對於需要資料攝取的專案：管線 cron 排程、管線角色和資料儲存庫特定組態。
 
-4. **Deploy Infrastructure with Terraform**
+4. **使用 Terraform 部署基礎設施**
 
-   - Open a terminal and navigate to the Terraform directory:
+   - 開啟終端機並導覽至 Terraform 目錄：
 
    ```bash
    cd deployment/terraform
    ```
 
-   - Initialize Terraform:
+   - 初始化 Terraform：
 
    ```bash
    terraform init
    ```
 
-   - Apply the Terraform configuration:
+   - 應用 Terraform 組態：
 
    ```bash
    terraform apply --var-file vars/env.tfvars
    ```
 
-   - Type 'yes' when prompted to confirm
+   - 在提示時輸入 'yes' 以確認
 
-After completing these steps, your infrastructure will be set up and ready for deployment!
+完成這些步驟後，您的基礎設施將會設定完成並準備好部署！
 
-## Dev Deployment
+## 開發環境部署
 
-For End-to-end testing of the application, including tracing and feedback sinking to BigQuery, without the need to trigger a CI/CD pipeline.
+用於應用程式的端對端測試，包括追蹤和意見回饋沉入 BigQuery，而無需觸發 CI/CD 管線。
 
 
-First, enable required Google Cloud APIs:
+首先，啟用所需的 Google Cloud API：
 
 ```bash
 gcloud config set project <your-dev-project-id>
 gcloud services enable serviceusage.googleapis.com cloudresourcemanager.googleapis.com
 ```
 
-After you edited the relative `terraform/dev/vars/env.tfvars` file, follow the following instructions:
+在您編輯相關的 `terraform/dev/vars/env.tfvars` 檔案後，請依照以下說明操作：
 
 ```bash
 cd deployment/terraform/dev
@@ -114,16 +112,16 @@ terraform init
 terraform apply --var-file vars/env.tfvars
 ```
 
-Then deploy the application using the following command (from the root of the repository):
+然後使用以下指令（從儲存庫的根目錄）部署應用程式：
 
 ```bash
 make backend
 ```
 
-> Note: the Makefile also offers a command to automate the dev terraform apply setup. `make setup-dev-env`
+> 注意：Makefile 也提供一個指令來自動化 dev terraform apply 設定。`make setup-dev-env`
 
-### End-to-end Demo video
+### 端對端展示影片
 
 <a href="https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/template_deployment_demo.mp4">
-  <img src="https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/preview_video.png" alt="Watch the video" width="300"/>
+  <img src="https://storage.googleapis.com/github-repo/generative-ai/sample-apps/e2e-gen-ai-app-starter-pack/preview_video.png" alt="觀看影片" width="300"/>
 </a>

@@ -1,33 +1,33 @@
-# Robust Load Testing for Generative AI Applications
+# 生成式AI應用程式的穩固負載測試
 
-This directory provides a comprehensive load testing framework for your Generative AI application, leveraging the power of [Locust](http://locust.io), a leading open-source load testing tool.
+此目錄為您的生成式AI應用程式提供了一個全面的負載測試框架，利用領先的開源負載測試工具 [Locust](http://locust.io) 的強大功能。
 
-##  Load Testing
+## 負載測試
 
-Before running load tests, ensure you have deployed the backend remotely.
+在執行負載測試之前，請確保您已遠端部署後端。
 
-Follow these steps to execute load tests:
+請遵循以下步驟執行負載測試：
 
-**1. Deploy the Backend Remotely:**
+**1. 遠端部署後端：**
    ```bash
    gcloud config set project <your-dev-project-id>
    make backend
    ```
 
-**2. Create a Virtual Environment for Locust:**
-   It's recommended to use a separate terminal tab and create a virtual environment for Locust to avoid conflicts with your application's Python environment.
+**2. 為Locust建立虛擬環境：**
+   建議使用單獨的終端機分頁並為 Locust 建立一個虛擬環境，以避免與您的應用程式 Python 環境發生衝突。
 
    ```bash
-   # Create and activate virtual environment
+   # 建立並啟用虛擬環境
    python3 -m venv .locust_env
    source .locust_env/bin/activate
    
-   # Install required packages
+   # 安裝所需的套件
    pip install locust==2.31.1 "google-cloud-aiplatform[langchain,reasoningengine]>=1.77.0"
    ```
 
-**3. Execute the Load Test:**
-   Trigger the Locust load test with the following command:
+**3. 執行負載測試：**
+   使用以下指令觸發 Locust 負載測試：
 
    ```bash
    export _AUTH_TOKEN=$(gcloud auth print-access-token -q)
@@ -38,5 +38,5 @@ Follow these steps to execute load tests:
    --html=tests/load_test/.results/report.html
    ```
 
-   This command initiates a 30-second load test, simulating 2 users spawning per second, reaching a maximum of 10 concurrent users.
+   此指令啟動一個為期 30 秒的負載測試，模擬每秒生成 2 個使用者，最多達到 10 個平行使用者。
 

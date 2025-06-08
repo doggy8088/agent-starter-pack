@@ -1,6 +1,6 @@
-# 🚀 Agent Starter Pack
+# 🚀 代理程式入門套件
 
-![Version](https://img.shields.io/pypi/v/agent-starter-pack?color=blue) [![1-Minute Video Overview](https://img.shields.io/badge/1--Minute%20Overview-gray)](https://youtu.be/jHt-ZVD660g) [![Docs](https://img.shields.io/badge/Documentation-gray)](https://googlecloudplatform.github.io/agent-starter-pack/) <a href="https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx">
+![版本](https://img.shields.io/pypi/v/agent-starter-pack?color=blue) [![1 分鐘影片概述](https://img.shields.io/badge/1--Minute%20Overview-gray)](https://youtu.be/jHt-ZVD660g) [![文件](https://img.shields.io/badge/Documentation-gray)](https://googlecloudplatform.github.io/agent-starter-pack/) <a href="https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
@@ -10,131 +10,130 @@
       srcset="https://cdn.firebasestudio.dev/btn/try_dark_20.svg">
     <img
       height="20"
-      alt="Try in Firebase Studio"
+      alt="在 Firebase Studio 中試用"
       src="https://cdn.firebasestudio.dev/btn/try_blue_20.svg">
   </picture>
-</a> [![Launch in Cloud Shell](https://img.shields.io/badge/Launch-in_Cloud_Shell-white)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs) ![Stars](https://img.shields.io/github/stars/GoogleCloudPlatform/agent-starter-pack?color=yellow)
+</a> [![在 Cloud Shell 中啟動](https://img.shields.io/badge/Launch-in_Cloud_Shell-white)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs) ![星號](https://img.shields.io/github/stars/GoogleCloudPlatform/agent-starter-pack?color=yellow)
 
 
-The `agent-starter-pack` is a collection of production-ready Generative AI Agent templates built for Google Cloud. <br>
-It accelerates development by providing a holistic, production-ready solution, addressing common challenges (Deployment & Operations, Evaluation, Customization, Observability) in building and deploying GenAI agents.
+`agent-starter-pack` 是為 Google Cloud 建構的一組生產級生成式 AI 代理程式模板。 <br>
+它透過提供全面的生產級解決方案來加速開發，解決建構和部署生成式 AI 代理程式時的常見挑戰（部署與操作、評估、自訂、可觀測性）。
 
-| ⚡️ Launch | 🧪 Experiment  | ✅ Deploy | 🛠️ Customize |
+| ⚡️ 啟動 | 🧪 實驗  | ✅ 部署 | 🛠️ 自訂 |
 |---|---|---|---|
-| [Pre-built agent templates](./agents/) (ReAct, RAG, multi-agent, Live API). | [Vertex AI evaluation](https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview) and an interactive playground. | Production-ready infra with [monitoring, observability](https://googlecloudplatform.github.io/agent-starter-pack/guide/observability), and [CI/CD](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment) on [Cloud Run](https://cloud.google.com/run) or [Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview). | Extend and customize templates according to your needs. |
-
+| [預建代理程式模板](./agents/) (ReAct、RAG、多代理程式、即時 API)。 | [Vertex AI 評估](https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview) 以及互動式實驗場。 | 生產級基礎設施具備[監控、可觀測性](https://googlecloudplatform.github.io/agent-starter-pack/guide/observability)，以及在 [Cloud Run](https://cloud.google.com/run) 或 [Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview) 上的 [CI/CD](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment)。 | 根據您的需求擴展和自訂模板。 |
 ---
  
-## ⚡ Get Started in 1 Minute
+## ⚡ 1 分鐘快速入門
 
-Ready to build your AI agent? Simply run this command:
+準備好建構您的 AI 代理程式了嗎？只需執行此指令：
 
 ```bash
-# Create and activate a Python virtual environment
+# 建立並啟用 Python 虛擬環境
 python -m venv .venv && source .venv/bin/activate
 
-# Install the agent starter pack
+# 安裝代理程式入門套件
 pip install agent-starter-pack
 
-# Create a new agent project
+# 建立新代理程式專案
 agent-starter-pack create my-awesome-agent
 ```
 
-**That's it!** You now have a fully functional agent project—complete with backend, frontend, and deployment infrastructure—ready for you to explore and customize.
-See [Installation Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation) for more options, or try with zero setup in [Firebase Studio](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) or [Cloud Shell](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs).
+**就這樣！** 您現在擁有一個功能齊全的代理程式專案—包括後端、前端和部署基礎設施—準備好供您探索和自訂。
+請參閱[安裝指南](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation)以獲取更多選項，或在 [Firebase Studio](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) 或 [Cloud Shell](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs) 中零設定試用。
 
 ---
 
- 🆕 The starter pack offers full support for Agent Engine, a new fully managed solution to deploy agents. Simply run this command to get started:
+ 🆕 此入門套件完全支援 Agent Engine，這是一個用於部署代理程式的全新完全託管解決方案。只需執行此指令即可開始：
 
 ```bash
 agent-starter-pack create my-agent -d agent_engine -a adk_base
 ```
 
-*See the [full list of options](https://googlecloudplatform.github.io/agent-starter-pack/cli/create) for details.*
+*請參閱[完整選項列表](https://googlecloudplatform.github.io/agent-starter-pack/cli/create)以獲取詳細資訊。*
 
-## 🤖 Agents
+## 🤖 代理程式
 
-| Agent Name                  | Description                                                                                                                       |
+| 代理程式名稱                  | 說明                                                                                                                       |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| `adk_base`      | A base ReAct agent implemented using Google's [Agent Development Kit](https://github.com/google/adk-python) |
-| `agentic_rag` | A RAG agent for document retrieval and Q&A. Supporting [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) and [Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview).       |
-| `langgraph_base_react`      | An agent implementing a base ReAct agent using LangGraph |
-| `crewai_coding_crew`       | A multi-agent system implemented with CrewAI created to support coding activities       |
-| `live_api`       | A real-time multimodal RAG agent powered by Gemini, supporting audio/video/text chat with vector DB-backed responses                       |
+| `adk_base`      | 一個使用 Google [Agent Development Kit](https://github.com/google/adk-python) 實作的基礎 ReAct 代理程式 |
+| `agentic_rag` | 用於文件檢索和問答的 RAG 代理。支援 [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) 和 [向量搜尋](https://cloud.google.com/vertex-ai/docs/vector-search/overview)。 |
+| `langgraph_base_react` | 一個使用 LangGraph 實作基本 ReAct 代理的代理 |
+| `crewai_coding_crew` | 一個使用 CrewAI 實作的多代理系統，旨在支援程式設計活動 |
+| `live_api` | 一個由 Gemini 提供支援的即時多模態 RAG 代理，支援音訊/影片/文字聊天，並使用向量資料庫支援回應 |
 
-**More agents are on the way!** We are continuously expanding our [agent library](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview). Have a specific agent type in mind? [Raise an issue as a feature request!](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues/new?labels=enhancement)
+**更多代理即將推出！** 我們正在持續擴展我們的 [代理函式庫](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview)。您是否對某種特定代理類型有想法？[將其作為功能請求提出議題！](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues/new?labels=enhancement)
 
-**🔍 ADK Samples**
+**🔍 ADK 範例**
 
-Looking to explore more ADK examples? Check out the [ADK Samples Repository](https://github.com/google/adk-samples) for additional examples and use cases demonstrating ADK's capabilities.
+想探索更多 ADK 範例？請查看 [ADK 範例儲存庫](https://github.com/google/adk-samples) 以獲取更多範例和使用案例，展示 ADK 的功能。
 
-#### Extra Features
+#### 額外功能
 
-The `agent-starter-pack` offers two key features to accelerate and simplify the development of your agent:
-- **🔄 [CI/CD Automation (Experimental)](https://googlecloudplatform.github.io/agent-starter-pack/cli/setup_cicd)** - One command to set up a complete GitHub + Cloud Build pipeline for all environments
-- **📥 [Data Pipeline for RAG with Terraform/CI-CD](https://googlecloudplatform.github.io/agent-starter-pack/guide/data-ingestion)** - Seamlessly integrate a data pipeline to process embeddings for RAG into your agent system. Supporting [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) and [Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview).
+`agent-starter-pack` 提供兩個主要功能，可加速並簡化您的代理開發：
+- **🔄 [CI/CD 自動化 (實驗性)](https://googlecloudplatform.github.io/agent-starter-pack/cli/setup_cicd)** - 一個指令即可為所有環境設定完整的 GitHub + Cloud Build 管道
+- **📥 [用於 RAG 的 Terraform/CI-CD 資料管道](https://googlecloudplatform.github.io/agent-starter-pack/guide/data-ingestion)** - 將資料管道無縫整合到您的代理系統中，以處理 RAG 的嵌入。支援 [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) 和 [向量搜尋](https://cloud.google.com/vertex-ai/docs/vector-search/overview)。
 
 
-## High-Level Architecture
+## 高階架構
 
-This starter pack covers all aspects of Agent development, from prototyping and evaluation to deployment and monitoring.
+此入門套件涵蓋代理開發的所有層面，從原型設計和評估到部署和監控。
 
-![High Level Architecture](docs/images/ags_high_level_architecture.png "Architecture")
+![高階架構](docs/images/ags_high_level_architecture.png "架構")
 
 ---
 
-## 🔧 Requirements
+## 🔧 要求
 
 - Python 3.10+
 - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
-- [Terraform](https://developer.hashicorp.com/terraform/downloads) (for deployment)
+- [Terraform](https://developer.hashicorp.com/terraform/downloads) (用於部署)
 
 
-## 📚 Documentation
+## 📚 文件
 
-Visit our [documentation site](https://googlecloudplatform.github.io/agent-starter-pack/) for comprehensive guides and references!
+請造訪我們的 [文件網站](https://googlecloudplatform.github.io/agent-starter-pack/) 以獲取全面的指南和參考資料！
 
-- [Getting Started Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started) - First steps with agent-starter-pack
-- [Installation Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation) - Setting up your environment
-- [Deployment Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment) - Taking your agent to production
-- [Agent Templates Overview](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview) - Explore available agent patterns
-- [CLI Reference](https://googlecloudplatform.github.io/agent-starter-pack/cli/) - Command-line tool documentation
-
-
-### Video Walkthrough:
-
-- **[Exploring the Agent Starter Pack](https://www.youtube.com/watch?v=9zqwym-N3lg)**: A comprehensive tutorial demonstrating how to rapidly deploy AI Agents using the Agent Starter Pack, covering architecture, templates, and step-by-step deployment.
-
-- **[6-minute introduction](https://www.youtube.com/live/eZ-8UQ_t4YM?feature=shared&t=2791)** (April 2024): Explaining the Agent Starter Pack and demonstrating its key features. Part of the Kaggle GenAI intensive course.
-
-- **[120-minute livestream demo](https://www.youtube.com/watch?v=yIRIT_EtALs&t=235s)** (March 6, 2025): Watch us build 3 Agents in under 30 minutes using the `agent-starter-pack`!
+- [入門指南](https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started) - agent-starter-pack 的第一步
+- [安裝指南](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation) - 設定您的環境
+- [部署指南](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment) - 將您的代理投入生產環境
+- [代理模板概覽](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview) - 探索可用的代理模式
+- [CLI 參考](https://googlecloudplatform.github.io/agent-starter-pack/cli/) - 命令列工具文件
 
 
-Looking for more examples and resources for Generative AI on Google Cloud? Check out the [GoogleCloudPlatform/generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) repository for notebooks, code samples, and more!
+### 影片導覽：
 
-## Contributing
+- **[探索 Agent Starter Pack](https://www.youtube.com/watch?v=9zqwym-N3lg)**: 一個全面的指南，展示如何使用 Agent Starter Pack 快速部署 AI 代理，涵蓋架構、模板和逐步部署。
 
-Contributions are welcome! See the [Contributing Guide](CONTRIBUTING.md).
+- **[6 分鐘介紹](https://www.youtube.com/live/eZ-8UQ_t4YM?feature=shared&t=2791)** (2024 年 4 月): 解釋 Agent Starter Pack 並展示其主要功能。Kaggle GenAI 密集課程的一部分。
 
-## Feedback
+- **[120 分鐘直播展示](https://www.youtube.com/watch?v=yIRIT_EtALs&t=235s)** (2025 年 3 月 6 日): 觀看我們如何在 30 分鐘內使用 `agent-starter-pack` 建立 3 個代理！
 
-We value your input! Your feedback helps us improve this starter pack and make it more useful for the community.
 
-### Getting Help
+正在尋找 Google Cloud 上更多關於生成式 AI 的範例和資源？請查看 [GoogleCloudPlatform/generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) 儲存庫，獲取筆記本、程式碼範例等！
 
-If you encounter any issues or have specific suggestions, please first consider [raising an issue](https://github.com/GoogleCloudPlatform/generative-ai/issues) on our GitHub repository.
+## 貢獻
 
-### Share Your Experience
+歡迎提供意見！請參閱[貢獻指南](CONTRIBUTING.md)。
 
-For other types of feedback, or if you'd like to share a positive experience or success story using this starter pack, we'd love to hear from you! You can reach out to us at <a href="mailto:agent-starter-pack@google.com">agent-starter-pack@google.com</a>.
+## 意見回饋
 
-Thank you for your contributions!
+我們重視您的意見！您的意見回饋有助於我們改進此入門套件，並使其對社群更有用。
 
-## Disclaimer
+### 取得協助
 
-This repository is for demonstrative purposes only and is not an officially supported Google product.
+如果您遇到任何問題或有特定建議，請先考慮在我們的 GitHub 儲存庫上[提出問題](https://github.com/GoogleCloudPlatform/generative-ai/issues)。
 
-## Terms of Service
+### 分享您的經驗
 
-The agent-starter-pack templating CLI and the templates in this starter pack leverage Google Cloud APIs. When you use this starter pack, you'll be deploying resources in your own Google Cloud project and will be responsible for those resources. Please review the [Google Cloud Service Terms](https://cloud.google.com/terms/service-terms) for details on the terms of service associated with these APIs.
+對於其他類型的意見回饋，或者如果您想分享使用此入門套件的正面經驗或成功案例，我們很樂意聽取您的意見！您可以透過 <a href="mailto:agent-starter-pack@google.com">agent-starter-pack@google.com</a> 與我們聯絡。
+
+感謝您的貢獻！
+
+## 免責聲明
+
+此儲存庫僅供展示用途，並非 Google 官方支援的產品。
+
+## 服務條款
+
+agent-starter-pack 範本化 CLI 和此入門套件中的範本會利用 Google Cloud API。當您使用此入門套件時，您將在自己的 Google Cloud 專案中部署資源，並將對這些資源負責。請參閱 [Google Cloud 服務條款](https://cloud.google.com/terms/service-terms) 以取得與這些 API 相關的服務條款詳細資訊。

@@ -1,151 +1,151 @@
-# Installation
+# 安裝
 
-There are several ways to install the Agent Starter Pack. Choose the method that works best for your workflow.
+有多種方式可以安裝 Agent Starter Pack。請選擇最適合您工作流程的方法。
 
-**Want zero setup?** 👉 [Try in Firebase Studio](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) or in [Cloud Shell](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs)
+**想要零設定？** 👉 [在 Firebase Studio 中試用](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) 或在 [Cloud Shell 中試用](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs)
 
-## `uvx` for Quick Project Creation
+## `uvx` 適用於快速專案建立
 
-If you have [uv](https://astral.sh/uv) installed, you can create projects without a permanent installation:
+如果您已安裝 [uv](https://astral.sh/uv)，您可以在不安裝的情況下建立專案：
 ```bash
 uvx agent-starter-pack create my-awesome-agent
 ```
 
-## Virtual Environment Installation
+## 虛擬環境安裝
 
-Installs into an isolated Python environment.
+安裝到獨立的 Python 環境中。
 
 ```bash
-# Create and activate venv
+# 建立並啟動 venv
 python -m venv .venv && source .venv/bin/activate # source .venv/Scripts/activate for Windows Git Bash
 
-# Install using pip or uv
+# 使用 pip 或 uv 安裝
 pip install agent-starter-pack
 ```
 
-## Persistent CLI Installation
+## 持續性 CLI 安裝
 
-Installs the `agent-starter-pack` command globally.
+將 `agent-starter-pack` 命令全域安裝。
 
-### With `pipx` (Isolated Global Tool)
+### 使用 `pipx` (獨立全域工具)
 ```bash
-# Install pipx (if needed)
+# 安裝 pipx (如果需要)
 python3 -m pip install --user pipx && python3 -m pipx ensurepath
 
-# Install Agent Starter Pack
+# 安裝 Agent Starter Pack
 pipx install agent-starter-pack
 ```
 
-### With `uv tool install` (Fast, Isolated Global Tool)
-Requires `uv` (see `uvx` section for install).
+### 使用 `uv tool install` (快速、獨立全域工具)
+需要 `uv` (請參閱 `uvx` 部分了解安裝方式)。
 ```bash
 uv tool install agent-starter-pack
 ```
 
-## Create Project (After Persistent/Venv Install)
+## 建立專案 (在持續性/Venv 安裝之後)
 
-If you installed via `pipx`, `uv tool install`, or in a virtual environment:
+如果您透過 `pipx`、`uv tool install` 或在虛擬環境中安裝：
 ```bash
 agent-starter-pack create my-awesome-agent
 ```
 
-## Managing Installation
+## 管理安裝
 
-### Upgrading
-*   **`uvx`:** Not needed (always uses latest).
+### 升級
+*   **`uvx`:** 不需要 (總是使用最新版本)。
 *   **`pipx`:** `pipx upgrade agent-starter-pack`
-*   **`uv tool`:** `uv tool install agent-starter-pack` (this upgrades)
-*   **`pip`/`uv pip` (in .venv):** `(uv) pip install --upgrade agent-starter-pack`
+*   **`uv tool`:** `uv tool install agent-starter-pack` (這會升級)
+*   **`pip`/`uv pip` (在 .venv 中):** `(uv) pip install --upgrade agent-starter-pack`
 
-### Uninstalling
-*   **`uvx`:** Not applicable.
+### 解除安裝
+*   **`uvx`:** 不適用。
 *   **`pipx`:** `pipx uninstall agent-starter-pack`
 *   **`uv tool`:** `uv tool uninstall agent-starter-pack`
-*   **`pip`/`uv pip` (in .venv):** `(uv) pip uninstall agent-starter-pack`
+*   **`pip`/`uv pip` (在 .venv 中):** `(uv) pip uninstall agent-starter-pack`
 
-## Troubleshooting Common Installation Issues
+## 常見安裝問題疑難排解
 
-### Command Not Found After Installation
+### 安裝後找不到命令
 
-If you encounter "command not found" errors after installation:
+如果您在安裝後遇到「找不到命令」錯誤：
 
-1.  **Check your PATH**: Ensure that the Python scripts directory is in your PATH:
+1.  **檢查您的 PATH**：確保 Python 腳本目錄在您的 PATH 中：
     ```bash
     echo $PATH
     ```
-2.  **Verify installation location**: Check where the package was installed:
+2.  **驗證安裝位置**：檢查套件的安裝位置：
     ```bash
     pip show agent-starter-pack
     ```
-3.  **Manual path addition**: If needed, add the scripts directory to your PATH:
+3.  **手動新增路徑**：如果需要，將腳本目錄新增到您的 PATH：
     ```bash
     export PATH="$HOME/.local/bin:$PATH"
-    # For user installations
+    # 適用於使用者安裝
     ```
-    Add this line to your `~/.bashrc` or `~/.zshrc` for persistence.
+    將此行新增到您的 `~/.bashrc` 或 `~/.zshrc` 中以保持持久性。
 
-### Permission Errors During Installation
+### 安裝期間的權限錯誤
 
-If you encounter permission errors:
+如果您遇到權限錯誤：
 
-1.  **Use user installation mode**:
+1.  **使用使用者安裝模式**：
     ```bash
     pip install --user agent-starter-pack
     ```
-2.  **Check directory permissions**:
+2.  **檢查目錄權限**：
     ```bash
     ls -la ~/.local/bin
     ```
-3.  **Fix permissions if needed**:
+3.  **如果需要，修復權限**：
     ```bash
     chmod +x ~/.local/bin/agent-starter-pack
     ```
 
-### Python Version Compatibility Issues
+### Python 版本相容性問題
 
-If you encounter Python version errors:
+如果您遇到 Python 版本錯誤：
 
-1.  **Check your Python version**:
+1.  **檢查您的 Python 版本**：
     ```bash
     python --version
     ```
-2.  **Install a compatible Python version** if needed (3.10 or newer is required).
-3.  **Create a virtual environment with the correct Python version**:
+2.  **如果需要，安裝相容的 Python 版本** (需要 3.10 或更高版本)。
+3.  **使用正確的 Python 版本建立虛擬環境**：
     ```bash
     python3.10 -m venv .venv
     source .venv/bin/activate
     ```
 
-### Package Dependency Conflicts
+### 套件相依性衝突
 
-If you encounter dependency conflicts:
+如果您遇到相依性衝突：
 
-1.  **Use a clean virtual environment**:
+1.  **使用乾淨的虛擬環境**：
     ```bash
     python -m venv .venv
     source .venv/bin/activate
     pip install agent-starter-pack
     ```
-2.  **Update pip and setuptools**:
+2.  **更新 pip 和 setuptools**：
     ```bash
     pip install --upgrade pip setuptools
     ```
-3.  **Install with verbose output to identify conflicts**:
+3.  **以詳細輸出模式安裝以識別衝突**：
     ```bash
     pip install -v agent-starter-pack
     ```
 
-### Installation Verification
+### 安裝驗證
 
-To verify your installation is working correctly:
+要驗證您的安裝是否正常運作：
 
-1.  **Check the installed version**:
+1.  **檢查已安裝版本**：
     ```bash
     agent-starter-pack --version
     ```
-2.  **Run the help command**:
+2.  **執行說明命令**：
     ```bash
     agent-starter-pack --help
     ```
 
-If you continue to experience issues, please [file an issue](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues) with details about your environment and the specific error messages you're encountering.
+如果您持續遇到問題，請[提出問題](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues)並提供有關您環境的詳細資訊以及您遇到的特定錯誤訊息。
