@@ -1,30 +1,33 @@
 # 安裝
 
-Agent Starter Pack 有多種安裝方式。請選擇最適合您工作流程的方法。
+有多種方式可以安裝 Agent Starter Pack。請選擇最適合您工作流程的方法。
+
 **想要零設定？** 👉 [在 Firebase Studio 中試用](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) 或在 [Cloud Shell 中試用](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs)
 
-## 使用 `uvx` 快速建立專案
-如果您已安裝 [uv](https://astral.sh/uv)，無需永久安裝即可建立專案：
+## `uvx` 適用於快速專案建立
+
+如果您已安裝 [uv](https://astral.sh/uv)，您可以在不安裝的情況下建立專案：
 ```bash
 uvx agent-starter-pack create my-awesome-agent
 ```
 
 ## 虛擬環境安裝
 
-安裝至隔離的 Python 環境中。
+安裝到獨立的 Python 環境中。
 
 ```bash
-# 建立並啟用 venv
-python -m venv .venv && source .venv/bin/activate # 對於 Windows Git Bash，使用 source .venv/Scripts/activate
+# 建立並啟動 venv
+python -m venv .venv && source .venv/bin/activate # source .venv/Scripts/activate for Windows Git Bash
 
 # 使用 pip 或 uv 安裝
 pip install agent-starter-pack
 ```
 
-## 持久化 CLI 安裝
-全域安裝 `agent-starter-pack` 命令。
+## 持續性 CLI 安裝
 
-### 使用 `pipx` (隔離的全域工具)
+將 `agent-starter-pack` 命令全域安裝。
+
+### 使用 `pipx` (獨立全域工具)
 ```bash
 # 安裝 pipx (如果需要)
 python3 -m pip install --user pipx && python3 -m pipx ensurepath
@@ -33,13 +36,14 @@ python3 -m pip install --user pipx && python3 -m pipx ensurepath
 pipx install agent-starter-pack
 ```
 
-### 使用 `uv tool install` (快速、隔離的全域工具)
-需要 `uv` (請參閱 `uvx` 部分以了解安裝方式)。
+### 使用 `uv tool install` (快速、獨立全域工具)
+需要 `uv` (請參閱 `uvx` 部分了解安裝方式)。
 ```bash
 uv tool install agent-starter-pack
 ```
 
-## 建立專案 (在持久化/Venv 安裝後)
+## 建立專案 (在持續性/Venv 安裝之後)
+
 如果您透過 `pipx`、`uv tool install` 或在虛擬環境中安裝：
 ```bash
 agent-starter-pack create my-awesome-agent
@@ -48,7 +52,7 @@ agent-starter-pack create my-awesome-agent
 ## 管理安裝
 
 ### 升級
-*   **`uvx`:** 無需 (始終使用最新版本)。
+*   **`uvx`:** 不需要 (總是使用最新版本)。
 *   **`pipx`:** `pipx upgrade agent-starter-pack`
 *   **`uv tool`:** `uv tool install agent-starter-pack` (這會升級)
 *   **`pip`/`uv pip` (在 .venv 中):** `(uv) pip install --upgrade agent-starter-pack`
@@ -59,26 +63,26 @@ agent-starter-pack create my-awesome-agent
 *   **`uv tool`:** `uv tool uninstall agent-starter-pack`
 *   **`pip`/`uv pip` (在 .venv 中):** `(uv) pip uninstall agent-starter-pack`
 
-## 排除常見安裝問題
+## 常見安裝問題疑難排解
 
 ### 安裝後找不到命令
 
 如果您在安裝後遇到「找不到命令」錯誤：
 
-1.  **檢查您的 PATH**: 確保 Python 腳本目錄在您的 PATH 中：
+1.  **檢查您的 PATH**：確保 Python 腳本目錄在您的 PATH 中：
     ```bash
     echo $PATH
     ```
-2.  **驗證安裝位置**: 檢查套件安裝在哪裡：
+2.  **驗證安裝位置**：檢查套件的安裝位置：
     ```bash
     pip show agent-starter-pack
     ```
-3.  **手動新增路徑**: 如果需要，將腳本目錄新增到您的 PATH：
+3.  **手動新增路徑**：如果需要，將腳本目錄新增到您的 PATH：
     ```bash
     export PATH="$HOME/.local/bin:$PATH"
     # 適用於使用者安裝
     ```
-    將此行新增到您的 `~/.bashrc` 或 `~/.zshrc` 以便持久化。
+    將此行新增到您的 `~/.bashrc` 或 `~/.zshrc` 中以保持持久性。
 
 ### 安裝期間的權限錯誤
 
@@ -105,8 +109,8 @@ agent-starter-pack create my-awesome-agent
     ```bash
     python --version
     ```
-2.  **如果需要，安裝相容的 Python 版本** (需要 3.10 或更新版本)。
-3.  **建立具有正確 Python 版本的虛擬環境**：
+2.  **如果需要，安裝相容的 Python 版本** (需要 3.10 或更高版本)。
+3.  **使用正確的 Python 版本建立虛擬環境**：
     ```bash
     python3.10 -m venv .venv
     source .venv/bin/activate
@@ -126,7 +130,7 @@ agent-starter-pack create my-awesome-agent
     ```bash
     pip install --upgrade pip setuptools
     ```
-3.  **以詳細輸出安裝以識別衝突**：
+3.  **以詳細輸出模式安裝以識別衝突**：
     ```bash
     pip install -v agent-starter-pack
     ```
@@ -135,12 +139,13 @@ agent-starter-pack create my-awesome-agent
 
 要驗證您的安裝是否正常運作：
 
-1.  **檢查已安裝的版本**：
+1.  **檢查已安裝版本**：
     ```bash
     agent-starter-pack --version
     ```
-2.  **執行幫助命令**：
+2.  **執行說明命令**：
     ```bash
     agent-starter-pack --help
     ```
-如果您持續遇到問題，請[提出問題](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues)並提供關於您環境的詳細資訊以及您遇到的特定錯誤訊息。
+
+如果您持續遇到問題，請[提出問題](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues)並提供有關您環境的詳細資訊以及您遇到的特定錯誤訊息。
